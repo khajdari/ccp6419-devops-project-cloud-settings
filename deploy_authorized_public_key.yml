@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+  - name: make direcotry
+    file:
+      path: "/home/cicdadmin/.ssh"
+      state: directory
+  - name: create empty file
+    file:
+      path: "/home/cicdadmin/.ssh/authorized_keys"
+      state: touch
+  - name: put pubkey
+    lineinfile:
+      path: "/home/cicdadmin/.ssh/authorized_keys"
+      line: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC65xA2ahPJoic2/QWVH6IOlKid1sj+9sc6P5YqQO7hjGthlLGVjA5iffEz5ceTjVvHWmD1b9FSj7uVkrhwktOOqIGo+ZmtzTmMhpljVkekCpQ7gUTpyxlyIaJgtHBYVj8oVHc1dGhi4R6Za/q7YDlMm0ejY9rmg1w7ToFkMK3+T751rpaQapVs82YvzurQMeEG/lAGKoPXFDPFqMA0TYDCQ9hrAP2rPA8wACEo8QL9evqJtiMsaFXSOitLAaHNf8fqtWfaz6IaoGwNCOOujjcztwRdmIZM75sqOsnRVqOZ6i+Uzmzbc32zyXO62WiIZfC9x/rHo1bIfaO4/4UeJTwb cicdadmin@ccp6419-configuration-server-os-profile'

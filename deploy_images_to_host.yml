@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - name: remove docker compose on host
+      command: rm -f /home/cicdadmin/docker-compose.yml
+      
+    - name: get docker compose from repository
+      command: wget https://raw.githubusercontent.com/khajdari/AthTech-DevOps-toDoAppWithLogin/master/docker-compose.yml
+      
+    - name: deploy docker application to host
+      command:  docker-compose up --build -d
+    
